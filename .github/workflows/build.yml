@@ -18,11 +18,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: '^20.10.0'
+          node-version: "^22.17.0"
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install esbuild
-        run: npm i -g esbuild@0.18.20
+        run: npm i -g esbuild
 
       - name: Install sharp - arm64
         run: npm i --save-exact --os=linux --cpu=arm64 --libc=glibc sharp
@@ -32,8 +32,8 @@ jobs:
         id: version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: 'package.json'
-          prop_path: 'dependencies.sharp'
+          path: "package.json"
+          prop_path: "dependencies.sharp"
       - name: esbuild - arm64
         run: esbuild --bundle ./node_modules/sharp/ --outfile=index.js --minify --format=cjs --platform=node
       - name: Zip - arm64
