@@ -69,9 +69,9 @@ jobs:
       - name: Install sharp - all
         run: |
           npm i --os=linux --cpu=x64 --libc=glibc sharp
-          cp -r node_modules/@img/sharp-linux-x64 /tmp/sharp-linux-x64
+          cp -r node_modules/@img/*-x64 /tmp/
           npm i --os=linux --cpu=arm64 --libc=glibc sharp
-          cp -r /tmp/sharp-linux-x64 node_modules/@img/
+          cp -r /tmp/*-x64 node_modules/@img/
       - name: Remove musl-based binary # @npm/cli#6914
         run: rm -rf node_modules/@img/*-linuxmusl*
       - name: esbuild - all
